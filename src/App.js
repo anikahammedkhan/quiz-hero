@@ -1,9 +1,11 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { router } from '../src/Router/Router';
 
 function App() {
   return (
     <div>
-      <h1>Quiz Hero</h1>
+      <RouterProvider router={router} />
     </div>
   );
 }
