@@ -1,9 +1,40 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Questions = () => {
     const questionsData = useLoaderData();
     const { questions } = questionsData;
+    console.log(questions);
+    const toastLoader = ({ option, answer }) => {
+        const givenAnswer = option.option;
+        const correctAnswer = answer.question.correctAnswer;
+        if (givenAnswer === correctAnswer) {
+            toast.info('🦄 Congratulation! Your Answer is Correct !', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        } else {
+            toast.info('🦄 Opps! Your Answer is wrong !', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    }
+
     return (
         <div>
             <h1 className='font-bold text-3xl my-7 text-center'>Select The Right Answer</h1>
@@ -14,34 +45,38 @@ const Questions = () => {
                             <h2 className="card-title">{question.question}</h2>
                             <div className="card-actions">
                                 <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <input type="radio" name={question.id} className="radio checked:bg-red-500" />
-                                        <span className="label-text font-bold text-lg"> {question.options[0]}</span>
-                                    </label>
-                                </div>
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <input type="radio" name={question.id} className="radio checked:bg-red-500" />
-                                        <span className="label-text font-bold text-lg"> {question.options[1]}</span>
-                                    </label>
-                                </div>
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <input type="radio" name={question.id} className="radio checked:bg-red-500" />
-                                        <span className="label-text font-bold text-lg"> {question.options[2]}</span>
-                                    </label>
-                                </div>
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <input type="radio" name={question.id} className="radio checked:bg-red-500" />
-                                        <span className="label-text font-bold text-lg"> {question.options[3]}</span>
-                                    </label>
+                                    {
+                                        question.options.map(option => <label key={Math.random()} className="label cursor-pointer justify-start">
+                                            <input type="radio" name={question.id} className="radio checked:bg-red-500"
+                                                onClick={() => toastLoader({
+                                                    option: { option },
+                                                    answer: { question }
+                                                })} />
+                                            <span className="label-text font-bold text-lg text-left"> {option}</span>
+
+                                        </label>
+                                        )
+                                    }
+
                                 </div>
                             </div>
                         </div>
                     </div>)
                 }
+
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };
