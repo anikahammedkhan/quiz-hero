@@ -4,7 +4,6 @@ import { useLoaderData } from 'react-router-dom';
 const Questions = () => {
     const questionsData = useLoaderData();
     const { questions } = questionsData;
-    console.log(questions);
     return (
         <div>
             <h1 className='font-bold text-3xl my-7 text-center'>Select The Right Answer</h1>
