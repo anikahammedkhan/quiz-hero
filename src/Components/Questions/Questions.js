@@ -55,7 +55,7 @@ const Questions = () => {
                         <div className="card-body">
                             <h2 className="card-title flex justify-between">
                                 <div>{question.question}</div>
-                                <label htmlFor="my-modal-3" className="btn btn-outline modal-button" onClick={() => showAnswer(question.correctAnswer)}><FontAwesomeIcon icon={faEye} /></label>
+                                <label htmlFor="my-modal-3" className="border-none" onClick={() => showAnswer(question.correctAnswer)}><FontAwesomeIcon icon={faEye} /></label>
                             </h2>
                             <div className="card-actions">
                                 <div className="form-control">
