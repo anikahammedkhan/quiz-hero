@@ -11,11 +11,11 @@ Please visit the live site link to view this site.
 This site is deployed on Netlify
 
 ### Website Features:
-*You can select a category as your wish, quiz question will appear as your selected category.
-*If you select a Wrong ans , then you will see a toster saying that your answer is incorrect.
-*If you select right answer, then you will see a toster saying that your answer is right.
-*In the question page , there is an eye button on every question, if you click on it, you will see the write answer for that question.
-*You can see Statistics about topic and number of question.
+* You can select a category as your wish, quiz question will appear as your selected category.
+* If you select a Wrong ans , then you will see a toster saying that your answer is incorrect.
+* If you select right answer, then you will see a toster saying that your answer is right.
+* In the question page , there is an eye button on every question, if you click on it, you will see the write answer for that question.
+* You can see Statistics about topic and number of question.
 * In the blog page you will see some frequently asked question answer.
 
 
