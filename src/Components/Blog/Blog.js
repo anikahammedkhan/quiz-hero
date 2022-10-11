@@ -1,7 +1,4 @@
 import React from 'react';
-import routerLogo from '../../Assets/react-router.png';
-import contexApi from '../../Assets/Context API in React with Hooks.png';
-import useRefLogo from '../../Assets/useref.png';
 
 const Blog = () => {
     return (

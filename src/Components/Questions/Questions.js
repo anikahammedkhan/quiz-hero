@@ -7,6 +7,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 const Questions = () => {
     const questionsData = useLoaderData();
+    const catName = questionsData.name;
     const { questions } = questionsData;
 
     const [answers, setAnswers] = useState([]);
@@ -45,7 +46,7 @@ const Questions = () => {
 
     return (
         <div>
-            <h1 className='font-bold text-3xl my-7 text-center'>Select The Right Answer</h1>
+            <h1 className='font-bold text-3xl my-7 text-center'>Question About {catName}</h1>
             <div className='grid grid-cols-1 gap-4 w-4/5 mx-auto'>
                 {
                     questions.map((question, index) => <div key={question.id}

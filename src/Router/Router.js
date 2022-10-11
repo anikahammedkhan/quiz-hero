@@ -54,9 +54,10 @@ export const router = createBrowserRouter([
                 loader: async ({ params }) => {
                     const response = await fetch(`https://openapi.programming-hero.com/api/quiz/${params.id}`);
                     const data = await response.json();
+                    console.log(data.data);
                     return data.data;
                 },
-                element: <Questions></Questions>
+                element: <Questions ></Questions>
             },
         ],
         element: <Main />
