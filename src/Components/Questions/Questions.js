@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 const Questions = () => {
     const questionsData = useLoaderData();
     const { questions } = questionsData;
-    console.log(questions);
+
+
+    const [answers, setAnswers] = useState([]);
+    const showAnswer = (answer) => {
+        setAnswers(answer);
+    }
+
+
     const toastLoader = ({ option, answer }) => {
         const givenAnswer = option.option;
         const correctAnswer = answer.question.correctAnswer;
@@ -35,14 +44,19 @@ const Questions = () => {
         }
     }
 
+
     return (
         <div>
             <h1 className='font-bold text-3xl my-7 text-center'>Select The Right Answer</h1>
             <div className='grid grid-cols-1 gap-4 w-4/5 mx-auto'>
                 {
-                    questions.map(question => <div key={question.id} className='card w-full bg-base-100 shadow-xl'>
+                    questions.map(question => <div key={question.id}
+                        className='card w-full bg-base-100 shadow-xl'>
                         <div className="card-body">
-                            <h2 className="card-title">{question.question}</h2>
+                            <h2 className="card-title flex justify-between">
+                                <div>{question.question}</div>
+                                <label htmlFor="my-modal-3" className="btn btn-outline modal-button" onClick={() => showAnswer(question.correctAnswer)}><FontAwesomeIcon icon={faEye} /></label>
+                            </h2>
                             <div className="card-actions">
                                 <div className="form-control">
                                     {
@@ -52,7 +66,7 @@ const Questions = () => {
                                                     option: { option },
                                                     answer: { question }
                                                 })} />
-                                            <span className="label-text font-bold text-lg text-left"> {option}</span>
+                                            <span className="label-text font-bold text-lg text-left ml-2"> {option}</span>
 
                                         </label>
                                         )
@@ -61,9 +75,17 @@ const Questions = () => {
                                 </div>
                             </div>
                         </div>
+                        {/* modal  */}
+                        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+                        <div className="modal">
+                            <div className="modal-box relative">
+                                <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <h3 className="text-lg font-bold">Correct Answer is :</h3>
+                                <p className="py-4">{answers}</p>
+                            </div>
+                        </div>
                     </div>)
                 }
-
             </div>
             <ToastContainer
                 position="top-right"
