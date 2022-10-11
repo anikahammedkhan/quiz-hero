@@ -9,7 +9,6 @@ const Questions = () => {
     const questionsData = useLoaderData();
     const { questions } = questionsData;
 
-
     const [answers, setAnswers] = useState([]);
     const showAnswer = (answer) => {
         setAnswers(answer);
@@ -44,17 +43,16 @@ const Questions = () => {
         }
     }
 
-
     return (
         <div>
             <h1 className='font-bold text-3xl my-7 text-center'>Select The Right Answer</h1>
             <div className='grid grid-cols-1 gap-4 w-4/5 mx-auto'>
                 {
-                    questions.map(question => <div key={question.id}
+                    questions.map((question, index) => <div key={question.id}
                         className='card w-full bg-base-100 shadow-xl'>
                         <div className="card-body">
                             <h2 className="card-title flex justify-between">
-                                <div>{question.question}</div>
+                                <div>Quiz {index + 1} :{question.question}</div>
                                 <label htmlFor="my-modal-3" className="border-none" onClick={() => showAnswer(question.correctAnswer)}><FontAwesomeIcon icon={faEye} /></label>
                             </h2>
                             <div className="card-actions">

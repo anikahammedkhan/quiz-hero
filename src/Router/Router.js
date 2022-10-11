@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Components/Blog/Blog";
+import Error from "../Components/Error/Error";
 import Home from "../Components/Home/Home";
 import Questions from "../Components/Questions/Questions";
 import Statistics from "../Components/Statistics/Statistics";
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
                 },
                 element: <Statistics />
             },
-            { path: '*', element: <div>404</div> },
+            { path: '*', element: <Error></Error> },
             {
                 path: '/quiz/:id',
                 loader: async ({ params }) => {
